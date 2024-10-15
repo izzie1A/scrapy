@@ -28,5 +28,6 @@ def crawl(url, depth):
         print(f"Failed to crawl {url}: {e}")
 
 # Start crawling from a specific URL
-start_url = 'https://example.com'  # Replace with your starting URL
-crawl(start_url, depth=2)  # Change depth as needed
+start_url = 'https://chinatownbia.com/wp-admin/edit.php?post_type=dt_portfolio'  # Replace with your starting URL
+start_url = 'https://chinatownbia.com/explore/'  # Replace with your starting URL
+crawl(start_url, depth=1)  # Change depth as needed
