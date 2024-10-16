@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+import numpy as np
 
 # Function to crawl a web page
 def crawl(url, depth):
@@ -14,16 +15,23 @@ def crawl(url, depth):
 
         print(f"Crawling: {url}")
 
+        result = []
         # Find all links on the page
         links = soup.find_all('a', href=True)
         for link in links:
             href = link['href']
             full_url = urljoin(url, href)  # Create a full URL
-            print(full_url)
-
+            result.append(full_url)
+            # print(full_url)
+            
             # Recursively crawl the link
             crawl(full_url, depth - 1)
-
+        with open('./output.txt', 'w') as f:
+            result.sort()
+            for element in result:
+                    print(element)
+                    f.write(f"{element}\n")
+                
     except Exception as e:
         print(f"Failed to crawl {url}: {e}")
 
